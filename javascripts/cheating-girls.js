@@ -14,4 +14,5 @@ function login(){
             
         }
         );
+    $("#hellomsg").innerText = "Hello, "+localStorage.getItem('nick');
 }
