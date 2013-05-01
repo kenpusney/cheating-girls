@@ -5,10 +5,13 @@ T.init({
 function login(){
     T.login(
         function(l){
-            $("#hellomsg").innerText="Hello, "+ l.nick;
+            localStorage.setItem("nick",l.nick);
+            localStorage.setItem("name",l.name);
+            localStorage.setItem("access_token",l.access_token);
+            localStorage.setItem("openid",l.openid);    
         },
         function(e){
-            $("#hellomsg").innerText=e.message
+            
         }
         );
 }
