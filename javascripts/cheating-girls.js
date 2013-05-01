@@ -24,6 +24,9 @@ function share(){
                     "post")
     .success(function(r){
         alert(r);
+    })
+    .error(function(code,msg){
+        alert(msg);
     });
 }
 
