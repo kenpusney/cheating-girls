@@ -8,11 +8,11 @@ function login(){
             localStorage.setItem("nick",l.nick);
             localStorage.setItem("name",l.name);
             localStorage.setItem("access_token",l.access_token);
-            localStorage.setItem("openid",l.openid);    
+            localStorage.setItem("openid",l.openid);
+            $("#hellomsg").text("Hello, "+localStorage.getItem('nick'));
         },
         function(e){
             
         }
         );
-    $("#hellomsg").text("Hello, "+localStorage.getItem('nick'));
 }
