@@ -17,6 +17,13 @@ function login(){
         );
 }
 
+function share(){
+    T.api("/t/add",{content:"我正在用cheating-girls，你也来试试吗？ http://kenpusney.github.io/cheating-girls/cheating-girls.html"})
+    .success(function(r){
+        alert(r);
+    });
+}
+
 function logout(){
     T.logout();
     localStorage.clear();
