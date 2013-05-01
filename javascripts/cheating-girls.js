@@ -18,7 +18,10 @@ function login(){
 }
 
 function share(){
-    T.api("/t/add",{content:"我正在用cheating-girls，你也来试试吗？ http://kenpusney.github.io/cheating-girls/cheating-girls.html"})
+    T.api("/t/add",{content:"我正在用cheating-girls，你也来试试吗？ http://kenpusney.github.io/cheating-girls/cheating-girls.html",
+                    clientip:"127.0.0.1"},
+                    "json",
+                    "post")
     .success(function(r){
         alert(r);
     });
