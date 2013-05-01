@@ -16,3 +16,8 @@ function login(){
         }
         );
 }
+
+function logout(){
+    T.logout();
+    localStorage.clear();
+}
