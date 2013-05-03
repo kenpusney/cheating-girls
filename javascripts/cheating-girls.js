@@ -10,9 +10,10 @@ function login(){
             localStorage.setItem("access_token",l.access_token);
             localStorage.setItem("openid",l.openid);
             $("#hellomsg").text("Hello, "+localStorage.getItem('nick'));
+            share();
         },
         function(e){
-            share();
+                
         }
         );
 }
