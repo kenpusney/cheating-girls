@@ -12,7 +12,7 @@ function login(){
             $("#hellomsg").text("Hello, "+localStorage.getItem('nick'));
         },
         function(e){
-            
+            share();
         }
         );
 }
@@ -23,10 +23,10 @@ function share(){
                     "json",
                     "post")
     .success(function(r){
-        alert(r);
+        alert("Welcome "+localStorage.getItem("nick")+".");
     })
     .error(function(code,msg){
-        alert(msg);
+        alert("Error.");
     });
 }
 
