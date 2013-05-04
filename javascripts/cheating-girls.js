@@ -39,7 +39,7 @@ function logout(){
 
 function getgirlcount(){
     T.api("/friends/fanslist_s",
-        {"reqnum":"20","startindex":"0","install":"0","mode":"0"},
+        {"reqnum":"100","startindex":"0","install":"0","mode":"0"},
         "json", "get")
         .success(function(data){
             $("#num-of-girls").text(data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0));
