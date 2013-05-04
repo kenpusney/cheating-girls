@@ -9,9 +9,9 @@ function login(){
             localStorage.setItem("name",l.name);
             localStorage.setItem("access_token",l.access_token);
             localStorage.setItem("openid",l.openid);
-            $("#hellomsg").text("你好，"+localStorage.getItem('nick'));
-            share();
-            getgirlcount();
+            $("#hellonick").text(localStorage.getItem('nick'));
+            share("第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧：");
+            getgirlcount(100);
         },
         function(e){
             alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
@@ -19,13 +19,13 @@ function login(){
         );
 }
 
-function share(){
-    T.api("/t/add",{content:"第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧： http://kenpusney.github.io/cheating-girls/cheating-girls.html",
+function share(text){
+    T.api("/t/add",{content: text + " http://kenpusney.github.io/cheating-girls/cheating-girls.html",
                     clientip:"127.0.0.1"},
                     "json",
                     "post")
     .success(function(r){
-        alert("欢迎，"+localStorage.getItem("nick")+"！");
+        alert("成功！\nSuccess!");
     })
     .error(function(code,msg){
         alert("呀，出错啦！要不要再来一次？\nOops, we get an error, try again?");
@@ -34,13 +34,13 @@ function share(){
 
 function logout(){
     T.logout();
-    $("#hellomsg").text("你好，陌生人");
+    $("#hellonick").text("陌生人");
     localStorage.clear();
 }
 
-function getgirlcount(){
+function getgirlcount(limit){
     T.api("/friends/fanslist_s",
-        {"reqnum":"100","startindex":"0","install":"0","mode":"0"},
+        {"reqnum":limit,"startindex":"0","install":"0","mode":"0"},
         "json", "get")
         .success(function(data){
             nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
@@ -51,6 +51,8 @@ function getgirlcount(){
 }
 
 $(function(){
-    if(T.loginStatus())
+    if(T.loginStatus()){
+        $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
         getgirlcount();
+    }
 })
