@@ -13,13 +13,13 @@ function login(){
             share();
         },
         function(e){
-                
+            alert("Oh sorry, login failed, try again.")
         }
         );
 }
 
 function share(){
-    T.api("/t/add",{content:"我正在用cheating-girls，你也来试试吗？ http://kenpusney.github.io/cheating-girls/cheating-girls.html",
+    T.api("/t/add",{content:"第一天，世界是美好的，世界被拯救了。 http://kenpusney.github.io/cheating-girls/cheating-girls.html",
                     clientip:"127.0.0.1"},
                     "json",
                     "post")
