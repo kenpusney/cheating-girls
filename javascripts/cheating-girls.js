@@ -11,7 +11,7 @@ function login(){
             localStorage.setItem("openid",l.openid);
             $("#hellonick").text(localStorage.getItem('nick'));
             share("第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧：");
-            getgirlcount(100);
+            getgirlcount("100");
         },
         function(e){
             alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
