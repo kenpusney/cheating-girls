@@ -43,7 +43,9 @@ function getgirlcount(){
         {"reqnum":"100","startindex":"0","install":"0","mode":"0"},
         "json", "get")
         .success(function(data){
-            $("#num-of-girls").text(data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0));
+            nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
+            $("num-of-girls").text(nog);
+            $("num-of-girls-en").text(nog);
             $("#info-block").show()
         })
 }
