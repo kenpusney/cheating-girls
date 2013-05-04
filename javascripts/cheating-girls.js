@@ -1,6 +1,6 @@
 T.init({
         appkey:801051784
-    });
+    });    
 
 function login(){
     T.login(
@@ -49,3 +49,8 @@ function getgirlcount(){
             $("#info-block").show()
         })
 }
+
+$(function(){
+    if(T.loginStatus())
+        getgirlcount();
+})
