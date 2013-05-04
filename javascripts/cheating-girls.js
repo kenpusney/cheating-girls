@@ -54,6 +54,6 @@ function getgirlcount(limit){
 $(function(){
     if(T.loginStatus()){
         $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
-        getgirlcount();
+        getgirlcount("100");
     }
 })
