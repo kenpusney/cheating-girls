@@ -44,8 +44,8 @@ function getgirlcount(){
         "json", "get")
         .success(function(data){
             nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
-            $("num-of-girls").text(nog);
-            $("num-of-girls-en").text(nog);
+            $("#num-of-girls").text(nog);
+            $("#num-of-girls-en").text(nog);
             $("#info-block").show()
         })
 }
