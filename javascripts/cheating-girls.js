@@ -35,6 +35,7 @@ function share(text){
 function logout(){
     T.logout();
     $("#hellonick").text("陌生人");
+    $("#info-block").hide();
     localStorage.clear();
 }
 
