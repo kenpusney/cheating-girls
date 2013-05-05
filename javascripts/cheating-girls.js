@@ -60,6 +60,7 @@ var cg = {
             .success(function(data){
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $(".num-of-girls").text(nog);
+                $("#info-block").slideUp();
             })
             .error(function(){
                 console.log("获取关注者列表失败！\nFailed to get follower list.");
