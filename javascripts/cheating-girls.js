@@ -113,7 +113,7 @@ $(function(){
     $("#btn-logout").on('click',cg.logout);
     $(".sharable").on('click',
         function(){
-            cg.share($(this).text() + '。你还不知道怎么选么？看这里：');
+            cg.share($(this).text() + '。');
             alert("分享已经提交，后台执行中！\nSubmitted and processing in backend!");
         });
     $("a").attr("target","_blank");
