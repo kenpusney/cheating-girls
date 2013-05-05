@@ -61,22 +61,20 @@ var cg = {
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $(".num-of-girls").text(nog);
                 $("#info-block").show();
-                T.api("/user/info",{}, "json", "get")
-                .success(function(v){
-                    cg.analysisgirls(data.data.info,v);
-                });
+                cg.analysisgirls(data.data.info);
             })
             .error(function(){
                 console.log("获取关注者列表失败！\nFailed to get follower list.");
             });
         },
-    analysisgirls: function(info,user){
+    analysisgirls: function(info){
             /*TODO: may failed on other platform*/
+            $("#girl-list").html("");
             info.filter(function(e){
                 return e.sex == 2;
             })
             .map(function(e){
-                e.score = 1 + e.idolnum*0.1 + e.fansnum*0.9
+                e.score = 1 + e.idolnum*0.1 + e.fansnum*0.7
                             + e.isidol*1.2 - e.isvip*500
                             - (e.nick.match(/减肥|广告|方案|科技|策划/)?500:0);
                 return e;
