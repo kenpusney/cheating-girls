@@ -69,12 +69,12 @@ var cg = {
         },
     analysisgirls: function(info){
             vinfo = info;
-            vinfo.filter(function(){
-                console.log(this);
-                return this.sex == 2;
+            vinfo.filter(function(e){
+                console.log(e.sex)
+                return e.sex == 2;
             })
-            .forEach(function(){
-                $("#girl-list").append("<li class='girl'>"+this.nick+"（@"+this.name+"—）</li>");
+            .forEach(function(e){
+                $("#girl-list").append("<li class='girl'>"+e.nick+"（@"+e.name+"—）</li>");
             });
         },
     getbccount: function(){
