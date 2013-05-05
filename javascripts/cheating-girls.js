@@ -6,11 +6,11 @@ T.init({
  * 重构之后仍然是翔一般的华丽
  * Still shit-like after refactor.
 */
-var cguser;
+var window.cguser;
 var cg = {
     login: function(){
             T.login(function(l){
-                    cguser = l;
+                    window.cguser = l;
                     localStorage.setItem("nick",l.nick);
                     localStorage.setItem("name",l.name);
                     localStorage.setItem("access_token",l.access_token);
@@ -76,6 +76,7 @@ var cg = {
                 return e.sex == 2;
             })
             .map(function(e){
+                cguser = window.cguser;
                 e.score = 0;
                 T.api("/user/other_info",
                     {"name":e.name,"fopenid":""},
