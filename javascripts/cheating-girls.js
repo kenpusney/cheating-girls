@@ -6,7 +6,7 @@ T.init({
  * 重构之后仍然是翔一般的华丽
  * Still shit-like after refactor.
 */
-var window.cguser;
+window.cguser={};
 var cg = {
     login: function(){
             T.login(function(l){
