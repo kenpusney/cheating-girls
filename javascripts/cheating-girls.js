@@ -76,15 +76,15 @@ var cg = {
             .map(function(e){
                 e.score = 1 + e.idolnum*0.1 + e.fansnum*0.7
                             + e.isidol*1.2 - e.isvip*500
-                            - (e.nick.match(/减肥|广告|方案|科技|策划/)?500:0);
+                            - (e.nick.match(/减肥|广告|方案|科技|策划|程序/)?500:0);
                 return e;
             })
             .sort(function(a,b){
                 return b.score - a.score;
             })
-            .slice(0,10)
+            .slice(0,8)
             .forEach(function(e){
-                $("#girl-list").append("<li class='girl'>"+e.nick+"（@"+e.name+"）"+Math.round(e.score)+"</li>");
+                $("#girl-list").append("<li class='girl'>"+e.nick+"（@"+e.name+"）"+"</li>");
             });
         },
     getbccount: function(){
