@@ -60,6 +60,9 @@ var cg = {
             .success(function(data){
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $(".num-of-girls").text(nog);
+            })
+            .error(function(){
+                console.log("获取关注者列表失败！\nFailed to get follower list.");
             });
         },
     getbccount: function(){
@@ -84,13 +87,10 @@ $(function(){
     /*Event-init*/
     $("#btn-login").click(cg.login);
     $("#btn-logout").click(cg.logout);
-    $("#btn-info-share").click(function(){
-           cg.share($('#sharable').text() + '。去发现更多艳遇吧：'); 
-           alert("分享成功！\nSuccess!")
-        });
     $(".sharable").click(
         function(){
-            cg.share($(this).text());
+            cg.share($(this).text() + '。去发现更多艳遇吧：');
+            alert("分享成功！\nSuccess!");
         });
     $("a").attr("target","_blank");
 });
