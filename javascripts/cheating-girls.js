@@ -42,7 +42,7 @@ var cg = {
                             "json",
                             "post")
             .success(function(r){
-                alert("成功！\nSuccess!");
+                console.log("成功！\nSuccess!")
             })
             .error(function(code,msg){
                 alert("呀，出错啦！要不要再来一次？\nOops, we get an error, try again?");
