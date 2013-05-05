@@ -76,8 +76,8 @@ var cg = {
                 return e.sex == 2;
             })
             .map(function(e){
-                e.score = 1 + e.idolnum*0.3 + e.fansnum * 0.2
-                            + e.isidol*2 - e.isvip*20;
+                e.score = 1 + e.idolnum*0.1 + e.fansnum*0.9
+                            + e.isidol*0.8 - e.isvip*500;
                 return e;
             })
             .sort(function(a,b){
