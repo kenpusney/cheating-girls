@@ -30,6 +30,7 @@ var cg = {
                 cg.getgirlcount("100");
             }else{
                 $("#btn-login").show();
+                $("#btn-logout").hide();
                 $("#hellonick").text("陌生人");
                 $("#info-block").hide();
                 $("#bc-info").hide();
