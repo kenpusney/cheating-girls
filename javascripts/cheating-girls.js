@@ -76,14 +76,14 @@ var cg = {
                 return e.sex == 2;
             })
             .map(function(e){
-                e.score = 1 + e.idolnum*0.3 + e.fansnum * 0.5
+                e.score = 1 + e.idolnum*0.3 + e.fansnum * 0.2
                             + e.isidol*2 - e.isvip*20;
                 return e;
             })
             .sort(function(a,b){
                 return a.score < b.score;
             })
-            .slice(0,10)
+            .slice(0,100)
             .forEach(function(e){
                 $("#girl-list").append("<li class='girl'>"+e.nick+"（@"+e.name+"）"+e.score+"</li>");
             });
