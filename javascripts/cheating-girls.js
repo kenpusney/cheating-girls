@@ -76,18 +76,8 @@ var cg = {
                 return e.sex == 2;
             })
             .map(function(e){
-                e.score = (T
-                .api("/user/other_info",
-                    {"name":e.name,"fopenid":""},
-                    "json", "get")
-                .success(function(g){
-                    this.score = 1 + g.ismyidol*3 + (2-g.isrealname)*3
-                            - g.isvip*2
-                            + (g.location == user.location)*5
-                            + (g.birth_year == user.birth_year)*3
-                            + (g.birth_month == user.birth_month)*2
-                            + g.send_private_flag*5;
-                })).score;
+                e.score = 1 + e.idolnum*0.3 + e.fansnum * 0.5
+                            + e.isidol*2 - isvip*20;
                 return e;
             })
             .sort(function(a,b){
