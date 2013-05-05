@@ -7,23 +7,33 @@ T.init({
  * Still shit-like after refactor.
 */
 var cg = {
-    login: function login(){
+    login: function(){
             T.login(function(l){
                     localStorage.setItem("nick",l.nick);
                     localStorage.setItem("name",l.name);
                     localStorage.setItem("access_token",l.access_token);
                     localStorage.setItem("openid",l.openid);
-                    $("#hellonick").text(localStorage.getItem('nick'));
-                    $("#btn-login").hide();
-                    $("#btn-logout").show();
+                    cg.logged();
                     cg.share("第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧：");
-                    cg.getgirlcount("100");
-                    cg.getbccount();
                 },
                 function(e){
                     alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
                 }
             );
+        },
+    logged: function(){
+            cg.getbccount();
+            if (T.loginStatus()){
+                $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
+                $("#btn-login").hide();
+                $("#btn-logout").show();
+                cg.getgirlcount("100");
+            }else{
+                $("#btn-login").show();
+                $("#hellonick").text("陌生人");
+                $("#info-block").hide();
+                $("#bc-info").hide();
+            }
         },
     share: function(text){
             T.api("/t/add",{content: text + " http://kenpusney.github.io/cheating-girls/cheating-girls.html",
@@ -39,10 +49,7 @@ var cg = {
         },
     logout: function(){
             T.logout();
-            $("#btn-login").show();
-            $("#hellonick").text("陌生人");
-            $("#info-block").hide();
-            $("#bc-info").hide();
+            cg.logged();
             localStorage.clear();
         },
     getgirlcount: function(limit){
@@ -74,11 +81,7 @@ var cg = {
 
 $(function(){
     /*UI-init*/
-    cg.getbccount();
-    if(T.loginStatus()){
-        $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
-        cg.getgirlcount("100");
-    }
+    cg.logged();
     /*Event-init*/
     $("#btn-login").click(cg.login);
     $("#btn-logout").click(cg.logout);
