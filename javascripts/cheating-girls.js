@@ -15,7 +15,6 @@ var cg = {
                     localStorage.setItem("openid",l.openid);
                     cg.logged();
                     cg.share("第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧：");
-                    cg.getgirlcount("100");
                 },
                 function(e){
                     alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
@@ -23,11 +22,12 @@ var cg = {
             );
         },
     logged: function(){
-            cg.getbccount();
             if (T.loginStatus()){
                 $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
                 $("#btn-login").fadeOut();
                 $("#btn-logout").fadeIn();
+                cg.getgirlcount("100");
+                cg.getbccount();
             }else{
                 $("#btn-login").fadeIn();
                 $("#btn-logout").fadeOut();
