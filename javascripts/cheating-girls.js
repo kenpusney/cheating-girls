@@ -1,7 +1,11 @@
 T.init({
         appkey:801051784
     });    
-    
+
+/*
+ * 重构之后仍然是翔一般的华丽
+ * Still shit-like after refactor.
+*/
 var cg = {
     login: function login(){
             T.login(function(l){
@@ -10,6 +14,8 @@ var cg = {
                     localStorage.setItem("access_token",l.access_token);
                     localStorage.setItem("openid",l.openid);
                     $("#hellonick").text(localStorage.getItem('nick'));
+                    $("#btn-login").hide();
+                    $("#btn-logout").show();
                     cg.share("第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧：");
                     cg.getgirlcount("100");
                     cg.getbccount();
@@ -33,8 +39,10 @@ var cg = {
         },
     logout: function(){
             T.logout();
+            $("#btn-login").show();
             $("#hellonick").text("陌生人");
             $("#info-block").hide();
+            $("#bc-info").hide();
             localStorage.clear();
         },
     getgirlcount: function(limit){
@@ -62,13 +70,23 @@ var cg = {
                 $("#bc-info").text("暂时无法获取相关信息");
             });
         }
-}
+};
 
 $(function(){
+    /*UI-init*/
     cg.getbccount();
     if(T.loginStatus()){
         $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
         cg.getgirlcount("100");
     }
-})
-
+    /*Event-init*/
+    $("#btn-login").click(cg.login);
+    $("#btn-logout").click(cg.logout);
+    $("#btn-info-share").click(function(){
+           cg.share($('#sharable').text() + '。去发现更多艳遇吧：'); 
+        });
+    $(".sharable").click(
+        function(){
+            cg.share($(this).text());
+        });
+});
