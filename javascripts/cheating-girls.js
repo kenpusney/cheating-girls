@@ -81,7 +81,7 @@ var cg = {
                 return e;
             })
             .sort(function(a,b){
-                return a.score < b.score;
+                return a.score - b.score;
             })
             .slice(0,100)
             .forEach(function(e){
