@@ -73,7 +73,7 @@ var cg = {
                 return this.sex == 2;
             })
             .each(function(){
-                $("#girl-list").append("<li class='girl'>"+this.nick+"（@"+this.name"—）</li>");
+                $("#girl-list").append("<li class='girl'>"+this.nick+"（@"+this.name+"—）</li>");
             });
         },
     getbccount: function(){
