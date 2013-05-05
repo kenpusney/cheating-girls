@@ -76,7 +76,7 @@ var cg = {
             .map(function(e){
                 e.score = 1 + e.idolnum*0.1 + e.fansnum*0.7
                             + e.isidol*1.2 - e.isvip*500
-                            - (e.nick.match(/减肥|广告|方案|科技|策划|程序/)?500:0);
+                            - (e.nick.match(/减肥|广告|方案|科技|策划|程序|时尚|IT/)?500:0);
                 return e;
             })
             .sort(function(a,b){
