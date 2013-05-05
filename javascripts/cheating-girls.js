@@ -70,6 +70,7 @@ var cg = {
     analysisgirls: function(info){
             vinfo = info;
             vinfo.filter(function(){
+                console.log(this);
                 return this.sex == 2;
             })
             .forEach(function(){
