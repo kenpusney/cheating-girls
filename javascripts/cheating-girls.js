@@ -72,7 +72,7 @@ var cg = {
             vinfo.filter(function(){
                 return this.sex == 2;
             })
-            .each(function(){
+            .forEach(function(){
                 $("#girl-list").append("<li class='girl'>"+this.nick+"（@"+this.name+"—）</li>");
             });
         },
