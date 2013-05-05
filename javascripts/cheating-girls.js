@@ -77,7 +77,7 @@ var cg = {
             })
             .map(function(e){
                 e.score = 1 + e.idolnum*0.3 + e.fansnum * 0.5
-                            + e.isidol*2 - isvip*20;
+                            + e.isidol*2 - e.isvip*20;
                 return e;
             })
             .sort(function(a,b){
