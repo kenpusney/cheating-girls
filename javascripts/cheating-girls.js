@@ -59,9 +59,7 @@ var cg = {
                 "json", "get")
             .success(function(data){
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
-                $("#num-of-girls").text(nog);
-                $("#num-of-girls-en").text(nog);
-                $("#info-block").slideDown();
+                $(".num-of-girls").text(nog);
             });
         },
     getbccount: function(){
@@ -93,4 +91,5 @@ $(function(){
         function(){
             cg.share($(this).text());
         });
+    $("a").attr("target","_blank");
 });
