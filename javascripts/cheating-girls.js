@@ -76,18 +76,18 @@ var cg = {
                 return e.sex == 2;
             })
             .map(function(e){
-                e.score = 0;
-                T.api("/user/other_info",
+                e.score = (T
+                .api("/user/other_info",
                     {"name":e.name,"fopenid":""},
                     "json", "get")
                 .success(function(g){
-                    e.score = 1 + g.ismyidol*3 + (2-g.isrealname)*3
+                    this.score = 1 + g.ismyidol*3 + (2-g.isrealname)*3
                             - g.isvip*2
                             + (g.location == user.location)*5
                             + (g.birth_year == user.birth_year)*3
                             + (g.birth_month == user.birth_month)*2
                             + g.send_private_flag*5;
-                })
+                })).score;
                 return e;
             })
             .sort(function(a,b){
