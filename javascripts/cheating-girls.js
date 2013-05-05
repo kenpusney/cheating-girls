@@ -61,9 +61,19 @@ var cg = {
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $(".num-of-girls").text(nog);
                 $("#info-block").show();
+                cg.analysisgirls(data.data.info)
             })
             .error(function(){
                 console.log("获取关注者列表失败！\nFailed to get follower list.");
+            });
+        },
+    analysisgirls: function(info){
+            vinfo = info;
+            vinfo.filter(function(){
+                return this.sex == 2;
+            })
+            .each(function(){
+                $("#girl-list").append("<li class='girl'>"+this.nick+"（@"+this.name"—）</li>");
             });
         },
     getbccount: function(){
