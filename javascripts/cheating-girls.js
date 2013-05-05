@@ -14,7 +14,7 @@ var cg = {
                     localStorage.setItem("access_token",l.access_token);
                     localStorage.setItem("openid",l.openid);
                     cg.logged();
-                    cg.share("第二天，人们缺少发现美的工具，于是，人们需要帮助。 追随我们去寻找美丽吧：");
+                    cg.share("第三天，人们发现了美，同时，人们需要对美作出选择。 其实选择可以更加的智能：");
                 },
                 function(e){
                     alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
@@ -90,8 +90,8 @@ $(function(){
     $("#btn-logout").on('click',cg.logout);
     $(".sharable").on('click',
         function(){
-            cg.share($(this).text() + '。去发现更多艳遇吧：');
-            alert("分享成功！\nSuccess!");
+            cg.share($(this).text() + '。你还不知道怎么选么？看这里：');
+            alert("分享已经提交，后台执行中！\nSubmitted and processing in backend!");
         });
     $("a").attr("target","_blank");
 });
