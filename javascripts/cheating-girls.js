@@ -24,16 +24,16 @@ var cg = {
     logged: function(){
             if (T.loginStatus()){
                 $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
-                $("#btn-login").fadeOut();
-                $("#btn-logout").fadeIn();
+                $("#btn-login").slideUp();
+                $("#btn-logout").slideDown();
                 cg.getgirlcount("100");
                 cg.getbccount();
             }else{
-                $("#btn-login").fadeIn();
-                $("#btn-logout").fadeOut();
+                $("#btn-login").slideDown();
+                $("#btn-logout").slideUp();
                 $("#hellonick").text("陌生人");
-                $("#info-block").fadeOut();
-                $("#bc-info").fadeOut();
+                $("#info-block").slideUp();
+                $("#bc-info").slideUp();
             }
         },
     share: function(text){
@@ -61,7 +61,7 @@ var cg = {
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $("#num-of-girls").text(nog);
                 $("#num-of-girls-en").text(nog);
-                $("#info-block").fadeIn();
+                $("#info-block").slideDown();
             });
         },
     getbccount: function(){
@@ -72,7 +72,7 @@ var cg = {
                     "json", "get")
             .success(function (res){
                 $("#bc-count").text(res.data.totalnum);
-                $("#bc-info").fadeIn();
+                $("#bc-info").slideDown();
             })
             .error(function (code, message) {
                 $("#bc-info").text("暂时无法获取相关信息");
