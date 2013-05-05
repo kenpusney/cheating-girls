@@ -6,11 +6,9 @@ T.init({
  * 重构之后仍然是翔一般的华丽
  * Still shit-like after refactor.
 */
-window.cguser={};
 var cg = {
     login: function(){
             T.login(function(l){
-                    window.cguser = l;
                     localStorage.setItem("nick",l.nick);
                     localStorage.setItem("name",l.name);
                     localStorage.setItem("access_token",l.access_token);
@@ -63,20 +61,21 @@ var cg = {
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $(".num-of-girls").text(nog);
                 $("#info-block").show();
-                cg.analysisgirls(data.data.info)
+                T.api("/user/info",{}, "json", "get")
+                .success(function(v){
+                    cg.analysisgirls(data.data.info,v);
+                });
             })
             .error(function(){
                 console.log("获取关注者列表失败！\nFailed to get follower list.");
             });
         },
-    analysisgirls: function(info){
-            vinfo = info;
+    analysisgirls: function(info,user){
             /*TODO: may failed on other platform*/
-            vinfo.filter(function(e){
+            info.filter(function(e){
                 return e.sex == 2;
             })
             .map(function(e){
-                cguser = window.cguser;
                 e.score = 0;
                 T.api("/user/other_info",
                     {"name":e.name,"fopenid":""},
@@ -84,9 +83,9 @@ var cg = {
                 .success(function(g){
                     e.score = 1 + g.ismyidol*3 + (2-g.isrealname)*3
                             - g.isvip*2
-                            + (g.location == cguser.location)*5
-                            + (g.birth_year == cguser.birth_year)*3
-                            + (g.birth_month == cguser.birth_month)*2
+                            + (g.location == user.location)*5
+                            + (g.birth_year == user.birth_year)*3
+                            + (g.birth_month == user.birth_month)*2
                             + g.send_private_flag*5;
                 })
                 return e;
