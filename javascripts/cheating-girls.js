@@ -6,10 +6,11 @@ T.init({
  * 重构之后仍然是翔一般的华丽
  * Still shit-like after refactor.
 */
+var cguser;
 var cg = {
     login: function(){
             T.login(function(l){
-                    cg.user = l;
+                    cguser = l;
                     localStorage.setItem("nick",l.nick);
                     localStorage.setItem("name",l.name);
                     localStorage.setItem("access_token",l.access_token);
@@ -82,9 +83,9 @@ var cg = {
                 .success(function(g){
                     e.score = 1 + g.ismyidol*3 + (2-g.isrealname)*3
                             - g.isvip*2
-                            + (g.location == cg.user.location)*5
-                            + (g.birth_year == cg.user.birth_year)*3
-                            + (g.birth_month == cg.user.birth_month)*2
+                            + (g.location == cguser.location)*5
+                            + (g.birth_year == cguser.birth_year)*3
+                            + (g.birth_month == cguser.birth_month)*2
                             + g.send_private_flag*5;
                 })
                 return e;
