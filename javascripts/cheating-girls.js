@@ -86,6 +86,7 @@ $(function(){
     $("#btn-logout").click(cg.logout);
     $("#btn-info-share").click(function(){
            cg.share($('#sharable').text() + '。去发现更多艳遇吧：'); 
+           alert("分享成功！\nSuccess!")
         });
     $(".sharable").click(
         function(){
