@@ -2,9 +2,11 @@
 Slate Theme for GitHub Pages
 by Jason Costello, @jsncostello
 *******************************************************************************/
-
+/*
+暂时用不到语法高亮，注释掉！
+Syntax highlight is useless, make it comment.
 @import url(pygment_trac.css);
-
+*/
 /*******************************************************************************
 MeyerWeb Reset
 *******************************************************************************/
@@ -173,8 +175,6 @@ pre, code {
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
 
-
-
 }
 
 pre {
@@ -321,7 +321,9 @@ Full-Width Styles
   background: none;
   text-shadow: #111 0px 0px 10px;
 }
-
+/*
+下载毛线？！
+What to download?!
 #downloads {
   position: absolute;
   width: 210px;
@@ -360,6 +362,7 @@ Full-Width Styles
 .tar_download_link:hover {
   background: url(../images/sprite_download.png) no-repeat top right;
 }
+*/
 
 #main_content_wrap {
   background: #f2f2f2;

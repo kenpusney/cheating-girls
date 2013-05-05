@@ -24,16 +24,16 @@ var cg = {
     logged: function(){
             if (T.loginStatus()){
                 $("#hellonick").text(localStorage.getItem('nick') || "陌生人");
-                $("#btn-login").slideUp();
-                $("#btn-logout").slideDown();
+                $("#btn-login").hide();
+                $("#btn-logout").show();
                 cg.getgirlcount("100");
                 cg.getbccount();
             }else{
-                $("#btn-login").slideDown();
-                $("#btn-logout").slideUp();
+                $("#btn-login").show();
+                $("#btn-logout").hide();
                 $("#hellonick").text("陌生人");
-                $("#info-block").slideUp();
-                $("#bc-info").slideUp();
+                $("#info-block").hide();
+                $("#bc-info").hide();
             }
         },
     share: function(text){
@@ -60,7 +60,7 @@ var cg = {
             .success(function(data){
                 nog = data.data.info.reduce(function(p,c){ return p+(c.sex == 2)},0);
                 $(".num-of-girls").text(nog);
-                $("#info-block").slideDown();
+                $("#info-block").show();
             })
             .error(function(){
                 console.log("获取关注者列表失败！\nFailed to get follower list.");
@@ -74,7 +74,7 @@ var cg = {
                     "json", "get")
             .success(function (res){
                 $("#bc-count").text(res.data.totalnum);
-                $("#bc-info").slideDown();
+                $("#bc-info").show();
             })
             .error(function (code, message) {
                 $("#bc-info").text("暂时无法获取相关信息");
@@ -86,9 +86,9 @@ $(function(){
     /*UI-init*/
     cg.logged();
     /*Event-init*/
-    $("#btn-login").click(cg.login);
-    $("#btn-logout").click(cg.logout);
-    $(".sharable").click(
+    $("#btn-login").on('click',cg.login);
+    $("#btn-logout").on('click',cg.logout);
+    $(".sharable").on('click',
         function(){
             cg.share($(this).text() + '。去发现更多艳遇吧：');
             alert("分享成功！\nSuccess!");
