@@ -9,6 +9,7 @@ T.init({
 var cg = {
     login: function(){
             T.login(function(l){
+                    cg.user = l;
                     localStorage.setItem("nick",l.nick);
                     localStorage.setItem("name",l.name);
                     localStorage.setItem("access_token",l.access_token);
@@ -69,12 +70,31 @@ var cg = {
         },
     analysisgirls: function(info){
             vinfo = info;
+            /*TODO: may failed on other platform*/
             vinfo.filter(function(e){
-                console.log(e.sex)
                 return e.sex == 2;
             })
+            .map(function(e){
+                e.score = 0;
+                T.api("/user/other_info",
+                    {"name":e.name,"fopenid":""},
+                    "json", "get")
+                .success(function(g){
+                    e.score = 1 + g.ismyidol*3 + (2-g.isrealname)*3
+                            - g.isvip*2
+                            + (g.location == cg.user.location)*5
+                            + (g.birth_year == cg.user.birth_year)*3
+                            + (g.birth_month == cg.user.birth_month)*2
+                            + g.send_private_flag*5;
+                })
+                return e;
+            })
+            .sort(function(a,b){
+                return a.score < b.score;
+            })
+            .slice(0,10)
             .forEach(function(e){
-                $("#girl-list").append("<li class='girl'>"+e.nick+"（@"+e.name+"—）</li>");
+                $("#girl-list").append("<li class='girl'>"+e.nick+"（@"+e.name+"）"+e.score+"</li>");
             });
         },
     getbccount: function(){
