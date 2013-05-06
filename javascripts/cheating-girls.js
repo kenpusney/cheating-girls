@@ -14,7 +14,7 @@ var cg = {
                     localStorage.setItem("access_token",l.access_token);
                     localStorage.setItem("openid",l.openid);
                     cg.logged();
-                    cg.share("第三天，人们发现了美，同时，人们需要对美作出选择。 其实选择可以更加的智能：");
+                    cg.share("第四天，美是永恒的，是善变的，是矛盾的。 守护住属于你的美丽：");
                 },
                 function(e){
                     alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
