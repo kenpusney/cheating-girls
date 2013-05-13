@@ -14,7 +14,7 @@ var cg = {
                     localStorage.setItem("access_token",l.access_token);
                     localStorage.setItem("openid",l.openid);
                     cg.logged();
-                    cg.share("第N天，@sdBLfv ，亲爱的，生日快乐！");
+                    cg.share("第N天，@sdBLfv ，生日快乐！");
                 },
                 function(e){
                     alert("抱歉，登录失败，请重试。\nOh sorry, login failed, try again.")
