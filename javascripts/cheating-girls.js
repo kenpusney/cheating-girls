@@ -1,12 +1,12 @@
-T.init({
+/* T.init({
         appkey:801051784
     });    
-
+ */
 /*
  * 重构之后仍然是翔一般的华丽
  * Still shit-like after refactor.
 */
-var cg = {
+/* var cg = {
     login: function(){
             T.login(function(l){
                     localStorage.setItem("nick",l.nick);
@@ -68,8 +68,8 @@ var cg = {
             });
         },
     analysisgirls: function(info){
-            /*TODO: may failed on other platform*/
-            $("#girl-list").html("");
+ */            /*TODO: may failed on other platform*/
+/*             $("#girl-list").html("");
             info.filter(function(e){
                 return e.sex == 2;
             })
@@ -106,10 +106,10 @@ var cg = {
 };
 
 $(function(){
-    /*UI-init*/
-    cg.logged();
-    /*Event-init*/
-    $("#btn-login").on('click',cg.login);
+ */    /*UI-init*/
+/*     cg.logged();
+ */    /*Event-init*/
+/*     $("#btn-login").on('click',cg.login);
     $("#btn-logout").on('click',cg.logout);
     $(".sharable").on('click',
         function(){
@@ -118,3 +118,4 @@ $(function(){
         });
     $("a").attr("target","_blank");
 });
+ */
